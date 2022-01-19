@@ -1,0 +1,14 @@
+.user-pic {
+    height: 40px; 
+    width: 40px; 
+    cursor: pointer;
+}
+
+.side-chat {
+    height: 72px;
+}
+
+.side-chat-pic {
+    height: 49px;
+    width: 49px;
+}
