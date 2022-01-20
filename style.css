@@ -113,7 +113,13 @@ header {
     width: 49px;
 }
 
-@media only screen and (min-width: 1395) { /*Risolvere*/
+@media only screen and (max-width: 900px) {
+    #side {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1300px) { 
     #side {
         width: 30%;
     }
@@ -275,7 +281,13 @@ main {
     font-size: 13px;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 900px) {
+    main {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
     main {
         width: 70%;
     }
