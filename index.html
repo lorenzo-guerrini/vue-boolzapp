@@ -69,31 +69,37 @@
                 </div>
 
                 <div id="reminder-text">
-                    <div>Ricevi notifiche di nuovi messaggi</div>
-                    <a href="#!">Attiva notifiche desktop</a>
-                    <span>
-                        <svg viewBox="0 0 8 12" width="8" height="12" class="">
-                            <path fill="currentColor"
-                                d="m2.173 1 4.584 4.725-4.615 4.615-1.103-1.103 3.512-3.512L1 2.173 2.173 1z"></path>
-                        </svg>
-                    </span>
+                    <div id="reminder-text-message">Ricevi notifiche di nuovi messaggi</div>
+                    <div id="reminder-link">
+                        <a href="#!">Attiva notifiche desktop</a>
+                        <span class="icon">
+                            <svg viewBox="0 0 8 12" width="8" height="12" class="">
+                                <path fill="currentColor" d="m2.173 1 4.584 4.725-4.615 4.615-1.103-1.103 3.512-3.512L1 2.173 2.173 1z">
+                                </path>
+                            </svg>
+                        </span>
+                    </div>
+                
                 </div>
             </div>
 
             <!-- Ricerca chat -->
             <div id="chats-search">
-                <button>
-                    <svg viewBox="0 0 24 24" width="24" height="24" class="">
-                        <path fill="currentColor" d="m12 4 1.4 1.4L7.8 11H20v2H7.8l5.6 5.6L12 20l-8-8 8-8z"></path>
-                    </svg>
-                    <svg viewBox="0 0 24 24" width="24" height="24" class="">
-                        <path fill="currentColor"
-                            d="M15.009 13.805h-.636l-.22-.219a5.184 5.184 0 0 0 1.256-3.386 5.207 5.207 0 1 0-5.207 5.208 5.183 5.183 0 0 0 3.385-1.255l.221.22v.635l4.004 3.999 1.194-1.195-3.997-4.007zm-4.808 0a3.605 3.605 0 1 1 0-7.21 3.605 3.605 0 0 1 0 7.21z">
-                        </path>
-                    </svg>
-                </button>
-
-                <input type="text" id="" placeholder="Cerca o inizia una nuova chat">
+                <div class="container">
+                    <button id="chats-search-button">
+                        <!-- <svg viewBox="0 0 24 24" width="24" height="24" class="">
+                            <path fill="currentColor" d="m12 4 1.4 1.4L7.8 11H20v2H7.8l5.6 5.6L12 20l-8-8 8-8z"></path>
+                        </svg> -->
+                        <svg viewBox="0 0 24 24" width="24" height="24" class="">
+                            <path fill="currentColor"
+                                d="M15.009 13.805h-.636l-.22-.219a5.184 5.184 0 0 0 1.256-3.386 5.207 5.207 0 1 0-5.207 5.208 5.183 5.183 0 0 0 3.385-1.255l.221.22v.635l4.004 3.999 1.194-1.195-3.997-4.007zm-4.808 0a3.605 3.605 0 1 1 0-7.21 3.605 3.605 0 0 1 0 7.21z">
+                            </path>
+                        </svg>
+                    </button>
+    
+                    <input type="text" id="chats-search-input" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                
             </div>
 
             <!-- Elenco chat -->
@@ -101,14 +107,18 @@
 
                 <!-- Archiviate -->
                 <div id="archived">
-                    <div>
+                    <div class="icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="">
                             <path
                                 d="m18.54 3.23-1.39-1.68C16.88 1.21 16.47 1 16 1H4c-.47 0-.88.21-1.16.55L1.46 3.23C1.17 3.57 1 4.02 1 4.5V17c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4.5c0-.48-.17-.93-.46-1.27ZM4.24 3h11.52l.81.97H3.44l.8-.97ZM3 17V6h14v11H3Zm8.45-9h-2.9v3H6l4 4 4-4h-2.55V8Z"
                                 fill="currentColor"></path>
                         </svg>
                     </div>
-                    <div>Archiviate</div>
+                    <div class="side-info">
+                        <div class="side-title">
+                            Archiviate
+                        </div>
+                    </div>
                     <div id="archived-counter">2</div>
                 </div>
 
