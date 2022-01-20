@@ -9,6 +9,14 @@ body {
     background-color: #090E11;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* Main container */
 #app {
     height: 100vh;
@@ -97,6 +105,28 @@ header {
 .side-chat-pic {
     height: 49px;
     width: 49px;
+}
+
+#notifications-reminder {
+    height: 89px;
+    padding: 13px 12px 14px 13px;
+    background-color: #085373;
+
+    display: flex;
+    align-items: center;
+}
+
+#notifications-reminder .icon {
+    margin-right: 15px;
+    color: #8EB2BE;
+}
+
+#reminder-text div {
+    color: #E8EBEE;
+}
+
+#reminder-text a, #reminder-text span {
+    color: #8EB2BE;
 }
 
 @media only screen and (min-width: 1200px) {
