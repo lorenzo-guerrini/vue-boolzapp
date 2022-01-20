@@ -1,7 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #090E11;
+}
+
+/* Main container */
+#app {
+    height: 100vh;
+    max-width: 1440px;
+    margin: auto;
+
+    display: flex;
+}
+
+@media only screen and (min-width: 1441px) {
+    #app {
+        max-width: 1396px;
+    }
+}
+
+@media only screen and (min-width: 1441px) and (min-height: 513px) {
+    #app {
+        margin: 20px auto;
+        height: calc(100vh - 40px);
+    }
+}
+
+
+/* Headers */
+header {
+    height: 59px;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 16px;
+}
+
+[id^="user-nav"] {
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon {
+    height: 40px;
+    width: 40px;
+    padding: 8px;
+}
+
+.nav-icon svg {
+    height: 24px;
+    width: 24px;
+}
+
+/* User info */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
 .user-pic {
     height: 40px; 
-    width: 40px; 
-    cursor: pointer;
+    width: 40px;
+}
+
+.user-pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 16px;
+}
+
+/* Side */
+#side {
+    width: 35%;
+    background-color: blue;
+    min-width: 300px;
 }
 
 .side-chat {
@@ -12,3 +97,22 @@
     height: 49px;
     width: 49px;
 }
+
+@media only screen and (min-width: 1200px) {
+    #side {
+        width: 30%;
+    }
+}
+
+/* Main */
+main {
+    width: 65%;
+    background-color: red;
+}
+
+@media only screen and (min-width: 1200px) {
+    main {
+        width: 70%;
+    }
+}
+
