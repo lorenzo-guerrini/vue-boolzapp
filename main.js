@@ -99,7 +99,7 @@ let vue = new Vue({
                         status: "received",
                         read: false
                     },
-                    
+
                 ],
             },
             {
@@ -158,11 +158,11 @@ let vue = new Vue({
         ]
     },
     methods: {
-        lastMessage: function(contact) {
+        lastMessage: function (contact) {
             return contact.messages[contact.messages.length - 1]
         },
 
-        notSeenMessages: function(contact) {
+        notSeenMessages: function (contact) {
             let counter = 0;
             contact.messages.forEach(element => {
                 if (element.read == false) {
