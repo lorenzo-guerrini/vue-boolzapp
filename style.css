@@ -398,7 +398,7 @@ header {
 /* ---- MAIN ---- */
 main {
     width: 65%;
-    background-color: red;
+    background-color: rgba(13, 20, 24, 0.6);
 }
 
 .last-seen {
@@ -407,8 +407,21 @@ main {
 }
 
 #user-chat {
-    background-image: url("img/background.png");
+    position: relative;
+    display: block;
 }
+
+#user-chat::after {
+    content: "";
+    background: url("img/background.png");
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 
 /* Messaggi */
 #user-chat {
