@@ -155,7 +155,8 @@ let vue = new Vue({
                     },
                 ],
             },
-        ]
+        ],
+        selectedContact: 0
     },
     methods: {
         lastMessage: function (contact) {
@@ -170,6 +171,22 @@ let vue = new Vue({
                 }
             });
             return counter;
+        },
+
+        getSelectedContact: function() {
+            return this.contacts[this.selectedContact];
+        },
+
+        isFirst: function(message, index) {
+            if (index = 0) {
+                return true;
+            }
+
+            if (message.status != this.messages[index--].status) {
+                return true;
+            }
+
+            return false;
         }
     }
 });

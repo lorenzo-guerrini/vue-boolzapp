@@ -12,6 +12,9 @@
 <!-- TODO -->
 <!-- Sistemare svg -->
 <!-- Mettere spunte blu -->
+<!-- Ultimo accesso -->
+<!-- Cambiare temp-user-chat in user-chat e user-chat in user-chat-container -->
+<!-- Sistemare scrollbar con trasparenza -->
 
 <body>
     <div id="app">
@@ -127,7 +130,7 @@
                 </div>
 
                 <!-- Side chat -->
-                <div class="side-chat" v-for="(contact, i) in contacts">
+                <div class="side-chat" @click="selectedContact = i" v-for="(contact, i) in contacts">
 
                     <div class="side-chat-pic">
                         <img :src="'img/propics/' + contact.avatar + '.jpg'" :alt="contact.name">
@@ -189,10 +192,10 @@
                 <!-- sx -->
                 <div class="user-info">
                     <div class="user-pic">
-                        <img :src="'img/propics/' + user.avatar + '.jpg'" :alt="'?????'">
+                        <img :src="'img/propics/' + getSelectedContact().avatar + '.jpg'" :alt="'?????'">
                     </div>
                     <div class="user-name">
-                        <span>??????</span>
+                        <span>{{getSelectedContact().name}}</span>
                         <div class="last-seen" title="ultimo accesso oggi alle 11:42">ultimo accesso oggi alle 11:42
                         </div>
                     </div>
@@ -219,77 +222,84 @@
             </header>
 
             <!-- Chat -->
-            <div id="user-chat">
+            <div id="temp-user-chat">
+                <div id="user-chat">
 
-                <div class="message received first">
-                    <div class="tail-in">
-                        <svg viewBox="0 0 8 13" width="8" height="13" class="">
-                            <path opacity=".13" fill="#0000000"
-                                d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path>
-                            <path fill="currentColor" d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z">
-                            </path>
-                        </svg>
+                    <div v-for="(message, i) in contacts[selectedContact].messages" class="message" :class="message.status + (isFirst(message, i))? first: a" >
+                    {{message.text}}
                     </div>
-                    <div class="message-content">
-                        <div class="message-text">
-                            come stai?
-                        </div>
-                        <div class="message-bottom">
-                            <span>00:00</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="message received">
-                    <div class="message-content">
-                        <div class="message-text">
-                            Io tutto bene
+                    <div class="message received first">
+                        <div class="tail-in">
+                            <svg viewBox="0 0 8 13" width="8" height="13" class="">
+                                <path opacity=".13" fill="#0000000"
+                                    d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path>
+                                <path fill="currentColor" d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z">
+                                </path>
+                            </svg>
                         </div>
-                        <div class="message-bottom">
-                            <span>00:00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="message sent first">
-                    <div class="tail-out">
-                        <svg viewBox="0 0 8 13" width="8" height="13" class="">
-                            <path opacity=".13" d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z"></path>
-                            <path fill="currentColor" d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z">
-                            </path>
-                        </svg>
-                    </div>
-                    <div class="message-content">
-                        <div class="message-text">
-                            Anche io tutto bene!
-                        </div>
-                        <div class="message-bottom">
-                            <span>00:00</span>
-                            <span class="read-icon"><svg viewBox="0 0 16 15" width="16" height="15" class="">
-                                    <path fill="currentColor"
-                                        d="m15.01 3.316-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z">
-                                    </path>
-                                </svg></span>
+                        <div class="message-content">
+                            <div class="message-text">
+                                come stai?
+                            </div>
+                            <div class="message-bottom">
+                                <span>00:00</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="message sent">
-                    <div class="message-content">
-                        <div class="message-text">
-                            Che fai?
+    
+                    <div class="message received">
+                        <div class="message-content">
+                            <div class="message-text">
+                                Io tutto bene
+                            </div>
+                            <div class="message-bottom">
+                                <span>00:00</span>
+                            </div>
                         </div>
-                        <div class="message-bottom">
-                            <span>00:00</span>
-                            <span class="read-icon"><svg viewBox="0 0 16 15" width="16" height="15" class="">
-                                    <path fill="currentColor"
-                                        d="m15.01 3.316-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z">
-                                    </path>
-                                </svg></span>
+                    </div>
+    
+                    <div class="message sent first">
+                        <div class="tail-out">
+                            <svg viewBox="0 0 8 13" width="8" height="13" class="">
+                                <path opacity=".13" d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z"></path>
+                                <path fill="currentColor" d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                Anche io tutto bene!
+                            </div>
+                            <div class="message-bottom">
+                                <span>00:00</span>
+                                <span class="read-icon"><svg viewBox="0 0 16 15" width="16" height="15" class="">
+                                        <path fill="currentColor"
+                                            d="m15.01 3.316-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z">
+                                        </path>
+                                    </svg></span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="message sent">
+                        <div class="message-content">
+                            <div class="message-text">
+                                Che fai?
+                            </div>
+                            <div class="message-bottom">
+                                <span>00:00</span>
+                                <span class="read-icon"><svg viewBox="0 0 16 15" width="16" height="15" class="">
+                                        <path fill="currentColor"
+                                            d="m15.01 3.316-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z">
+                                        </path>
+                                    </svg></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
 
             <!-- invia messaggio -->
             <footer>

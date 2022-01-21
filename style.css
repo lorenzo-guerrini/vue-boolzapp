@@ -21,17 +21,18 @@ a:hover {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
+    -webkit-appearance: none;
     width: 6px;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #131c21; 
+    background: rgba(57,57,57, .6);
   }
-   
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #394045; 
+    background: rgba(107, 121, 131, .432); 
   }
 
 /* Main container */
@@ -421,18 +422,24 @@ main {
 }
 
 /* Messaggi */
+#temp-user-chat {
+    height: calc(100vh - 121px);
+    overflow-y: auto;
+}
+
 #user-chat {
     position: relative;
     display: flex;
     flex-direction: column;
 
-    height: calc(100vh - 121px);
-    padding-bottom: 8px;
+    min-height: calc(100vh - 121px);
+    padding-bottom: 8px;    
 }
 
 #user-chat::after {
     content: "";
-    background: url("img/background.png");
+    background-image: url("img/background.png");
+    background-size: auto;
     opacity: 0.2;
     top: 0;
     left: 0;
