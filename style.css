@@ -7,6 +7,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #090E11;
+
+    overflow: hidden;
 }
 
 a {
@@ -213,7 +215,7 @@ header {
     height: 30px;
     font-size: 15px;
 
-    width: 80%;
+    width: 70%;
     margin-left: 30px;
 
     font-size: 13px;
@@ -406,9 +408,26 @@ main {
     font-size: 13px;
 }
 
+@media only screen and (max-width: 900px) {
+    main {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    main {
+        width: 70%;
+    }
+}
+
+/* Messaggi */
 #user-chat {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
+
+    height: calc(100vh - 121px);
+    padding-bottom: 8px;
 }
 
 #user-chat::after {
@@ -421,14 +440,7 @@ main {
     right: 0;
     position: absolute;
     z-index: -1;   
-  }
-
-/* Messaggi */
-#user-chat {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 8px;
-}
+ }
 
 .message {
     margin: 2px 8.5% 0 8.5%;
@@ -527,14 +539,81 @@ main {
     margin-left: 2px;
 }
 
-@media only screen and (max-width: 900px) {
-    main {
-        width: 60%;
-    }
+/* Footer */
+footer {
+    height: 62px;
+    padding: 5px 23.5px 5px 12px;
+
+    background-color: #1e2428;
+    color: #828689;
+
+    display: flex;
+    justify-content: space-between;
 }
 
-@media only screen and (min-width: 1300px) {
-    main {
-        width: 70%;
-    }
+#send-media {
+    height: 52px;
+    width: 100px;
+    padding: 5px 1px;
+    margin-right: 15px;
+
+    display: flex;
+    align-items: center;
+}
+
+footer svg {
+    width: 100%;
+    height: 100%;
+}
+
+#send-emoji, #send-files {
+    margin: 8px;
+
+    display: flex;
+    align-items: center;
+}
+
+#send-emoji {
+    height: 26px;
+    width: 26px;
+}
+
+#send-audio-record {
+    height: 24px;
+    width: 24px;
+    margin-left: 16.5px;
+}
+
+#send-audio-record svg {
+    height: 24px;
+    width: 24px;
+}
+
+#send-files {
+    height: 24px;
+    width: 24px;
+}
+
+#send-message {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#message-input {
+    height: 42px;
+    width: 100%;
+    border: 0;
+    border-radius: 50px;
+    
+    background-color: #33383b;
+    color: #f1f1f2;
+    font-weight: 500;
+    font-size: 15px;
+
+    padding: 0 17px;
+}
+
+#message-input:focus {
+    outline: none;
 }
