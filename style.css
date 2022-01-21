@@ -227,7 +227,7 @@ header {
 #chats-container {
     height: calc(100vh - 197px);
     background-color: #131c21;
-    
+
     overflow-x: hidden;
     overflow-y: auto;
 
@@ -408,6 +408,67 @@ main {
 
 #user-chat {
     background-image: url("img/background.png");
+}
+
+/* Messaggi */
+#user-chat {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 8px;
+}
+
+.message {
+    padding: 6px 7px 8px 9px;
+
+    margin-bottom: 12px;
+    margin: 0 8.5% 12px 8.5%;
+    border-radius: 7.5px;
+
+    font-size: 14.2px;
+    color: #e7e7e8;
+
+    position: relative;
+}
+
+.message.first {
+    margin-bottom: 2px;
+}
+
+.message.sent.first {
+    border-radius: 7.5px 0 7.5px 7.5px;
+}
+
+.message.received.first {
+    border-radius: 0 7.5px 7.5px 7.5px;
+}
+
+.message.sent {
+    align-self: flex-end;
+
+    background-color: #056162;
+}
+
+.message.received {
+    align-self: flex-start;
+
+    background-color: #262d31;
+}
+
+.tail-in, .tail-out {
+    position: absolute;
+    top: -2px;
+}
+
+.tail-in {
+    color: #262d31;
+
+    left: -8px;
+}
+
+.tail-out {
+    color: #056162;
+
+    right: -8px;
 }
 
 @media only screen and (max-width: 900px) {
