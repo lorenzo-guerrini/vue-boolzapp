@@ -21,7 +21,7 @@
                 <!-- sx -->
                 <div class="user-info">
                     <div class="user-pic">
-                        <img src="img/propics/user.jpg" alt="user-name">
+                        <img :src="'img/propics/' + user.avatar + '.jpg'" :alt="user.name">
                     </div>
                     <div class="user-name">
                         Lorenzo
@@ -114,8 +114,8 @@
                                 fill="currentColor"></path>
                         </svg>
                     </div>
-                    <div class="side-info">
-                        <div class="side-title">
+                    <div id="archived-info">
+                        <div id="archived-title">
                             Archiviate
                         </div>
                     </div>
@@ -123,22 +123,56 @@
                 </div>
 
                 <!-- Side chat -->
-                <div class="side-chat">
+                <div class="side-chat" v-for="(contact, i) in contacts">
+
                     <div class="side-chat-pic">
-                        <img src="" alt="">
+                        <img :src="'img/propics/' + contact.avatar + '.jpg'" :alt="contact.name">
                     </div>
 
-                    <div class="side-chat-row1">
-                        <div class="side-chat-name"></div>
-                        <div class="side-chat-time"></div>
+                    <div class="side-chat-info" v-if="notSeenMessages(contacts[i]) > 0">
+                        <div class="side-chat-column">
+                            <div class="side-chat-name">
+                                <strong>{{contacts[i].name}}</strong>
+                            </div>
+                            <div class="side-chat-message">
+                                <strong>{{lastMessage(contacts[i]).text}}</strong>
+                            </div>
+                        </div>
+
+                        <div class="side-chat-column" >
+                            <div class="side-chat-time unread">
+                                {{lastMessage(contacts[i]).date}}
+                            </div>
+                            
+                            <div class="side-chat-msg-counter unread">
+                                <span>{{notSeenMessages(contacts[i])}}</span>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="side-chat-row2">
-                        <div class="side-chat-message"></div>
-                        <div class="side-chat-msg-counter"></div>
-                    </div>
+                    <div class="side-chat-info" v-else>
+                        <div class="side-chat-column">
+                            <div class="side-chat-name">
+                                {{contacts[i].name}}
+                            </div>
+                            <div class="side-chat-message">
+                                {{lastMessage(contacts[i]).text}}
+                            </div>
+                        </div>
 
+                        <div class="side-chat-column">
+                            <div class="side-chat-time">
+                                {{lastMessage(contacts[i]).date}}
+                            </div>
+                            
+                            <div class="side-chat-msg-counter ">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -151,10 +185,10 @@
                 <!-- sx -->
                 <div class="user-info">
                     <div class="user-pic">
-                        <img src="img/propics/user.jpg" alt="user-name">
+                        <img :src="'img/propics/' + user.avatar + '.jpg'" :alt="'?????'">
                     </div>
                     <div class="user-name">
-                        <span>Lorenzo</span>
+                        <span>??????</span>
                         <div class="last-seen" title="ultimo accesso oggi alle 11:42">ultimo accesso oggi alle 11:42
                         </div>
                     </div>
