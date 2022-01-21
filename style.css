@@ -431,20 +431,17 @@ main {
 }
 
 .message {
-    padding: 6px 7px 8px 9px;
-
     margin-bottom: 12px;
-    margin: 0 8.5% 12px 8.5%;
+    margin: 2px 8.5% 0 8.5%;
     border-radius: 7.5px;
 
-    font-size: 14.2px;
     color: #e7e7e8;
 
     position: relative;
 }
 
 .message.first {
-    margin-bottom: 2px;
+    margin-top: 12px;
 }
 
 .message.sent.first {
@@ -456,12 +453,16 @@ main {
 }
 
 .message.sent {
+    padding: 6px 79px 8px 9px;
+
     align-self: flex-end;
 
     background-color: #056162;
 }
 
 .message.received {
+    padding: 6px 62px 8px 9px;
+
     align-self: flex-start;
 
     background-color: #262d31;
@@ -469,7 +470,7 @@ main {
 
 .tail-in, .tail-out {
     position: absolute;
-    top: -2px;
+    top: -4px;
 }
 
 .tail-in {
@@ -482,6 +483,27 @@ main {
     color: #056162;
 
     right: -8px;
+}
+
+.message-text {
+    font-size: 14.2px;
+}
+
+.message-bottom {
+    font-size: 11px;
+    color: #F1F1F2A1;
+
+    position: absolute;
+    right: 6px;
+    bottom: 1px;
+
+    display: flex;
+    align-items: center;
+}
+
+.read-icon {
+    margin-top: 3px;
+    margin-left: 2px;
 }
 
 @media only screen and (max-width: 900px) {
