@@ -205,7 +205,7 @@
                         <div class="last-seen" title="ultimo accesso oggi alle 11:42">ultimo accesso {{lastSeen()}}
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <!-- dx -->
@@ -236,7 +236,8 @@
                     <div v-for="(message, i) in contacts[selectedContact].messages" class="message"
                         :class="(message.status) + ' ' + ((isFirstMessage(message, i)) ? 'first' : '')">
                         <!-- Se il messaggio è il primo o il primo di una serie aggiunge la tail -->
-                        <i v-if="isFirstMessage(message, i)" class="tail" :class="(message.status == 'sent')? 'out' : 'in'">
+                        <i v-if="isFirstMessage(message, i)" class="tail"
+                            :class="(message.status == 'sent')? 'out' : 'in'">
                         </i>
 
                         <!-- Contenuto del messaggio -->

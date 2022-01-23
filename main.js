@@ -191,7 +191,7 @@ let vue = new Vue({
         },
 
         //Main
-        lastSeen: function() {
+        lastSeen: function () {
             let tempMessages = this.contacts[this.selectedContact].messages;
 
             for (let i = tempMessages.length - 1; i > 0; i--) {
