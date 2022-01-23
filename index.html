@@ -225,7 +225,7 @@
             <div id="temp-user-chat">
                 <div id="user-chat">
 
-                    <div v-for="(message, i) in contacts[selectedContact].messages" class="message" :class="message.status + (isFirst(message, i))? first: a" >
+                    <div v-for="(message, i) in contacts[selectedContact].messages" class="message" :class="(message.status) + ' ' + ((isFirst(message, i)) ? 'first' : 'a')" >
                     {{message.text}}
                     </div>
 

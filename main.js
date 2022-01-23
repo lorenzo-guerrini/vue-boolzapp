@@ -33,7 +33,7 @@ let vue = new Vue({
             {
                 name: "Dua Lipa",
                 avatar: "_1",
-                visible: true, //Archiviato?
+                visible: true,
                 messages: [
                     {
                         date: "10/01/2020 15:30:55",
@@ -178,15 +178,22 @@ let vue = new Vue({
         },
 
         isFirst: function(message, index) {
-            if (index = 0) {
+            //Se il messaggio è il primo = false
+            if (index == 0) {
+                isFirstCheck = true;
+                console.log(index, true)
                 return true;
             }
 
-            if (message.status != this.messages[index--].status) {
-                return true;
+            //Se lo status del messaggio che precede è uguale a quello del messaggio selezionato = false
+            if (message.status == this.contacts[this.selectedContact].messages[index - 1].status) {
+
+                console.log(index, false)
+                return false;
             }
 
-            return false;
+            //Se il messaggio non è il primo e non è preceduto da messaggi con status uguale = true
+            return true;
         }
     }
 });
