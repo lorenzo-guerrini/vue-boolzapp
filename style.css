@@ -111,6 +111,10 @@ header {
     margin-left: 16px;
 }
 
+.user-name span {
+    color: #e1e2e3;
+}
+
 /* ---- SIDE ---- */
 #side {
     width: 35%;

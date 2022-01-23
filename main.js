@@ -191,7 +191,19 @@ let vue = new Vue({
         },
 
         //Main
-        isFirst: function (message, index) {
+        lastSeen: function() {
+            let tempMessages = this.contacts[this.selectedContact].messages;
+
+            for (let i = tempMessages.length - 1; i > 0; i--) {
+                console.log("a")
+                if (tempMessages[i].status == "received") {
+                    return tempMessages[i].date;
+                }
+            }
+            return "null";
+        },
+
+        isFirstMessage: function (message, index) {
             //Se il messaggio è il primo = false
             if (index == 0) {
                 return true;

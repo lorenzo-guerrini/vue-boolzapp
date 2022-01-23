@@ -11,8 +11,7 @@
 
 <!-- TODO -->
 <!-- Sistemare svg -->
-<!-- Mettere spunte blu -->
-<!-- Ultimo accesso -->
+<!-- Mettere ora e giorno separati in ultimo accesso -->
 <!-- Cambiare temp-user-chat in user-chat e user-chat in user-chat-container -->
 <!-- Sistemare scrollbar con trasparenza -->
 <!-- Permesso notifiche -->
@@ -203,9 +202,10 @@
                     </div>
                     <div class="user-name">
                         <span>{{getSelectedContact().name}}</span>
-                        <div class="last-seen" title="ultimo accesso oggi alle 11:42">ultimo accesso oggi alle 11:42
+                        <div class="last-seen" title="ultimo accesso oggi alle 11:42">ultimo accesso {{lastSeen()}}
                         </div>
                     </div>
+                    
                 </div>
 
                 <!-- dx -->
@@ -234,9 +234,9 @@
 
                     <!-- Stampa tutti i messaggi -->
                     <div v-for="(message, i) in contacts[selectedContact].messages" class="message"
-                        :class="(message.status) + ' ' + ((isFirst(message, i)) ? 'first' : '')">
+                        :class="(message.status) + ' ' + ((isFirstMessage(message, i)) ? 'first' : '')">
                         <!-- Se il messaggio è il primo o il primo di una serie aggiunge la tail -->
-                        <i v-if="isFirst(message, i)" class="tail" :class="(message.status == 'sent')? 'out' : 'in'">
+                        <i v-if="isFirstMessage(message, i)" class="tail" :class="(message.status == 'sent')? 'out' : 'in'">
                         </i>
 
                         <!-- Contenuto del messaggio -->
