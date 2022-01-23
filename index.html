@@ -17,6 +17,7 @@
 <!-- Permesso notifiche -->
 <!-- Risistemare side -->
 <!-- Ordinare utenti in base a ultimo messaggio -->
+<!-- Aggiungere risposte varie -->
 
 <body>
     <div id="app">
@@ -106,7 +107,8 @@
                         </svg>
                     </button>
 
-                    <input type="text" id="chats-search-input" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" id="chats-search-input" v-model="searchInput"
+                        placeholder="Cerca o inizia una nuova chat">
                 </div>
 
             </div>
@@ -133,7 +135,7 @@
 
                 <!-- Side chat -->
                 <div class="side-chat" @click="selectedContact = i; MarkAsReadAllMessages(contact)"
-                    v-for="(contact, i) in contacts">
+                    v-for="(contact, i) in contacts" v-show="matchesSearch(contact)">
 
                     <div class="side-chat-pic">
                         <img :src="'img/propics/' + contact.avatar + '.jpg'" :alt="contact.name">

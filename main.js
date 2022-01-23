@@ -168,7 +168,8 @@ let vue = new Vue({
             },
         ],
         selectedContact: 0,
-        messageInput: ""
+        messageInput: "",
+        searchInput: ""
     },
     methods: {
         //Side
@@ -194,6 +195,14 @@ let vue = new Vue({
             contact.messages.forEach((message) => {
                 message.read = true;
             });
+        },
+
+        //Restituisce true o false se il nome del contatto inserito è uguale in lowercase a searchInput in lowecase
+        matchesSearch: function (contact) {
+            if (this.searchInput == "") {
+                return true;
+            }
+            return contact.name.toLowerCase().startsWith(this.searchInput.toLowerCase());
         },
 
         //Main
@@ -233,9 +242,8 @@ let vue = new Vue({
         },
 
         //Gestione messaggi
-
         addMessage: function () {
-            if (this.messageInput.trim == "") {
+            if (this.messageInput.trim() == "") {
                 return;
             }
 
