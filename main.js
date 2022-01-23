@@ -9,6 +9,7 @@ let vue = new Vue({
             {
                 name: "Katy Perry",
                 avatar: "_0",
+                status: "online",
                 visible: true, //Archiviato?
                 messages: [
                     {
@@ -34,6 +35,7 @@ let vue = new Vue({
             {
                 name: "Dua Lipa",
                 avatar: "_1",
+                status: "online",
                 visible: true,
                 messages: [
                     {
@@ -65,6 +67,7 @@ let vue = new Vue({
             {
                 name: "Lana Del Rey",
                 avatar: "_2",
+                status: "online",
                 visible: true,
                 messages: [
                     {
@@ -75,7 +78,7 @@ let vue = new Vue({
                     },
                     {
                         date: "10/01/2020 15:32:54",
-                        text: "I'm sorry...",
+                        text: "Do you want to talk about it?",
                         status: "sent",
                         read: true
                     },
@@ -109,6 +112,7 @@ let vue = new Vue({
             {
                 name: "Pizzeria",
                 avatar: "_3",
+                status: "online",
                 visible: true,
                 messages: [
                     {
@@ -139,6 +143,7 @@ let vue = new Vue({
             {
                 name: "+39 337 9754465",
                 avatar: "_default",
+                status: "online",
                 visible: true,
                 messages: [
                     {
@@ -227,6 +232,8 @@ let vue = new Vue({
             return tempArray[0] + ":" + tempArray[1];
         },
 
+        //Gestione messaggi
+
         addMessage: function () {
             if (this.messageInput.trim == "") {
                 return;
@@ -235,7 +242,6 @@ let vue = new Vue({
             const now = new dayjs();
 
             this.contacts[this.selectedContact].messages.push({
-                //date: "10/01/2020 15:32:38",
                 date: this.getCurrentDate(),
                 text: this.messageInput,
                 status: "sent",
@@ -243,7 +249,26 @@ let vue = new Vue({
             })
 
             this.messageInput = "";
+
+            this.getDefaultReply();
         },
+
+        getDefaultReply: function () {
+            this.contacts[this.selectedContact].status = "sta scrivendo..."
+            setTimeout(() => {
+                this.contacts[this.selectedContact].messages.push({
+                    date: this.getCurrentDate(),
+                    text: "Ok",
+                    status: "received",
+                    read: true
+                });
+
+                this.contacts[this.selectedContact].status = "online"
+
+                clearTimeout(this);
+            }, 1000);
+        },
+
 
         //Ora
         getCurrentDate: function () {

@@ -16,6 +16,7 @@
 <!-- Sistemare scrollbar con trasparenza -->
 <!-- Permesso notifiche -->
 <!-- Risistemare side -->
+<!-- Ordinare utenti in base a ultimo messaggio -->
 
 <body>
     <div id="app">
@@ -203,7 +204,8 @@
                     </div>
                     <div class="user-name">
                         <span>{{getSelectedContact().name}}</span>
-                        <div class="last-seen" title="ultimo accesso oggi alle 11:42">ultimo accesso {{lastSeen()}}
+                        <div class="last-seen" :title="getSelectedContact().status">
+                            {{getSelectedContact().status}}
                         </div>
                     </div>
 
