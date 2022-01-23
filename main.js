@@ -165,6 +165,7 @@ let vue = new Vue({
         selectedContact: 0
     },
     methods: {
+        //Side
         lastMessage: function (contact) {
             return contact.messages[contact.messages.length - 1]
         },
@@ -183,6 +184,13 @@ let vue = new Vue({
             return this.contacts[this.selectedContact];
         },
 
+        MarkAsReadAllMessages: function (contact) {
+            contact.messages.forEach((message) => {
+                message.read = true;
+            });
+        },
+
+        //Main
         isFirst: function (message, index) {
             //Se il messaggio è il primo = false
             if (index == 0) {
@@ -245,6 +253,7 @@ let vue = new Vue({
     },
     mounted: function () {
         this.applyChatIcons();
+        this.MarkAsReadAllMessages(this.getSelectedContact());
     },
 
     updated() {

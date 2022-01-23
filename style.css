@@ -312,6 +312,9 @@ header {
 .side-chat-message {
     font-size: 14px;
     color: #F1F1F2A1;
+
+    display: flex;
+    align-items: center;
 }
 
 .side-chat-time, .side-chat-msg-counter {
@@ -345,6 +348,16 @@ header {
 
 .side-chat-message, .side-chat-msg-counter {
     margin-top: 3px;
+}
+
+#side i.read-icon {
+    margin-top: 4px;
+    margin-right: 2px;
+}
+
+#side i.read-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 /* Archived */
@@ -541,12 +554,12 @@ main {
     right: 7px;
 }
 
-.read-icon {
+main i.read-icon {
     margin-top: 3px;
     margin-left: 2px;
 }
 
-.read-icon.seen {
+i.read-icon.seen {
     color: #34b7f1;
 }
 

@@ -131,7 +131,8 @@
                 </div>
 
                 <!-- Side chat -->
-                <div class="side-chat" @click="selectedContact = i" v-for="(contact, i) in contacts">
+                <div class="side-chat" @click="selectedContact = i; MarkAsReadAllMessages(contact)"
+                    v-for="(contact, i) in contacts">
 
                     <div class="side-chat-pic">
                         <img :src="'img/propics/' + contact.avatar + '.jpg'" :alt="contact.name">
@@ -165,7 +166,11 @@
                                 {{contacts[i].name}}
                             </div>
                             <div class="side-chat-message">
-                                {{lastMessage(contacts[i]).text}}
+                                <i v-if="lastMessage(contacts[i]).status == 'sent'" class="read-icon"
+                                    :class="{'seen' : lastMessage(contacts[i]).read}"></i>
+                                <span>
+                                    {{lastMessage(contacts[i]).text}}
+                                </span>
                             </div>
                         </div>
 
@@ -174,7 +179,7 @@
                                 {{lastMessage(contacts[i]).date}}
                             </div>
 
-                            <div class="side-chat-msg-counter ">
+                            <div class="side-chat-msg-counter">
                             </div>
                         </div>
 
