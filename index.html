@@ -283,7 +283,7 @@
 
                 <!-- dx -->
                 <div id="send-message">
-                    <input type="text" id="message-input" placeholder="Scrivi un messaggio">
+                    <input type="text" id="message-input" placeholder="Scrivi un messaggio" v-model="messageInput" v-on:keyup.enter="addMessage()">
                     <div id="send-audio-record">
                         <svg viewBox="0 0 24 24" width="24" height="24" class="">
                             <path fill="currentColor"

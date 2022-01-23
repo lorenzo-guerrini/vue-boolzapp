@@ -162,7 +162,8 @@ let vue = new Vue({
                 ],
             },
         ],
-        selectedContact: 0
+        selectedContact: 0,
+        messageInput: ""
     },
     methods: {
         //Side
@@ -226,6 +227,31 @@ let vue = new Vue({
             return tempArray[0] + ":" + tempArray[1];
         },
 
+        addMessage: function () {
+            if (this.messageInput.trim == "") {
+                return;
+            }
+
+            const now = new dayjs();
+
+            this.contacts[this.selectedContact].messages.push({
+                //date: "10/01/2020 15:32:38",
+                date: this.getCurrentDate(),
+                text: this.messageInput,
+                status: "sent",
+                read: true
+            })
+
+            this.messageInput = "";
+        },
+
+        //Ora
+        getCurrentDate: function () {
+            const now = new dayjs();
+            return now.date() + "/" + now.month() + "/" + now.year() + " " + now.hour() + ":" + now.minute() + ":" + now.second()
+        },
+
+        //Icons
         applyChatIcons: function () {
             //Tail
             document.querySelectorAll("i.tail.in").forEach((element) => {
