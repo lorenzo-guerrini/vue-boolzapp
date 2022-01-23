@@ -195,7 +195,6 @@ let vue = new Vue({
             let tempMessages = this.contacts[this.selectedContact].messages;
 
             for (let i = tempMessages.length - 1; i > 0; i--) {
-                console.log("a")
                 if (tempMessages[i].status == "received") {
                     return tempMessages[i].date;
                 }
