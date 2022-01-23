@@ -14,7 +14,8 @@ let vue = new Vue({
                     {
                         date: "23/12/2021 21:37:23",
                         text: "It's over.",
-                        status: "sent"
+                        status: "sent",
+                        read: true
                     },
                     {
                         date: "23/12/2021 21:38:41",
@@ -38,7 +39,8 @@ let vue = new Vue({
                     {
                         date: "10/01/2020 15:30:55",
                         text: "How are you?",
-                        status: "sent"
+                        status: "sent",
+                        read: true
                     },
                     {
                         date: "10/01/2020 15:50:00",
@@ -74,7 +76,8 @@ let vue = new Vue({
                     {
                         date: "10/01/2020 15:32:54",
                         text: "I'm sorry...",
-                        status: "sent"
+                        status: "sent",
+                        read: true
                     },
                     {
                         date: "20/03/2020 16:35:00",
@@ -91,7 +94,8 @@ let vue = new Vue({
                     {
                         date: "10/01/2020 15:38:54",
                         text: "Is everything ok?",
-                        status: "sent"
+                        status: "sent",
+                        read: true
                     },
                     {
                         date: "20/03/2020 16:39:00",
@@ -121,7 +125,8 @@ let vue = new Vue({
                     {
                         date: "28/03/2020 10:27:10",
                         text: "Una marinara e una margherita",
-                        status: "sent"
+                        status: "sent",
+                        read: true
                     },
                     {
                         date: "28/03/2020 10:30:14",
@@ -145,7 +150,8 @@ let vue = new Vue({
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Chi sei?",
-                        status: "sent"
+                        status: "sent",
+                        read: true
                     },
                     {
                         date: "10/01/2020 15:32:38",
@@ -173,27 +179,75 @@ let vue = new Vue({
             return counter;
         },
 
-        getSelectedContact: function() {
+        getSelectedContact: function () {
             return this.contacts[this.selectedContact];
         },
 
-        isFirst: function(message, index) {
+        isFirst: function (message, index) {
             //Se il messaggio è il primo = false
             if (index == 0) {
-                isFirstCheck = true;
-                console.log(index, true)
                 return true;
             }
 
             //Se lo status del messaggio che precede è uguale a quello del messaggio selezionato = false
-            if (message.status == this.contacts[this.selectedContact].messages[index - 1].status) {
+            const messageStatus = message.status;
 
-                console.log(index, false)
+            const prevMessageStatus = this.contacts[this.selectedContact].messages[index - 1].status;
+
+            if (messageStatus == prevMessageStatus) {
                 return false;
             }
 
             //Se il messaggio non è il primo e non è preceduto da messaggi con status uguale = true
             return true;
+        },
+
+        getTime: function (message) {
+            const tempArray = message.date.split(" ")[1].split(":");
+            return tempArray[0] + ":" + tempArray[1];
+        },
+
+        applyChatIcons: function () {
+            //Tail
+            document.querySelectorAll("i.tail.in").forEach((element) => {
+                element.innerHTML = `
+                    <svg viewBox="0 0 8 13" width="8" height="13" class="">
+                        <path opacity=".13" fill="#0000000"
+                        d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"></path>
+                        <path fill="currentColor" d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z">
+                        </path>
+                    </svg>
+                    `;
+            });
+
+            document.querySelectorAll("i.tail.out").forEach((element) => {
+                element.innerHTML = `
+                    <svg viewBox="0 0 8 13" width="8" height="13" class="">
+                        <path opacity=".13" d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z"></path>
+                        <path fill="currentColor" d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z">
+                        </path>
+                    </svg>
+                    `;
+            });
+
+
+            document.querySelectorAll("i.read-icon").forEach((element) => {
+                element.innerHTML = `
+                    <svg viewBox="0 0 16 15" width="16" height="15" class="">
+                    <path fill="currentColor"
+                    d="m15.01 3.316-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z">
+                    </path>
+                </svg>
+                `;
+            });
+            // document.querySelectorAll("i").forEach((element) => {element.innerHTML = ``;});
         }
+    },
+    mounted: function () {
+        this.applyChatIcons();
+    },
+
+    updated() {
+        this.applyChatIcons();
     }
 });

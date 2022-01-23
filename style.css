@@ -486,18 +486,18 @@ main {
     background-color: #262d31;
 }
 
-.tail-in, .tail-out {
+.tail.in, .tail.out {
     position: absolute;
     top: -4px;
 }
 
-.tail-in {
+.tail.in {
     color: #262d31;
 
     left: -8px;
 }
 
-.tail-out {
+.tail.out {
     color: #056162;
 
     right: -8px;
@@ -544,6 +544,10 @@ main {
 .read-icon {
     margin-top: 3px;
     margin-left: 2px;
+}
+
+.read-icon.seen {
+    color: #34b7f1;
 }
 
 /* Footer */
