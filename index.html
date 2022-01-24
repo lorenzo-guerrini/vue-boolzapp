@@ -137,7 +137,8 @@
                 </div>
 
                 <!-- Side chat -->
-                <div class="side-chat" @click="selectedContact = i; MarkAsReadAllMessages(contact); hideAllMessageMenu()"
+                <div class="side-chat"
+                    @click="selectedContact = i; MarkAsReadAllMessages(contact); hideAllMessageMenu()"
                     v-for="(contact, i) in contacts" v-show="matchesSearch(contact)">
 
                     <div class="side-chat-pic">
@@ -264,9 +265,13 @@
 
                         <!-- Menu messaggio -->
                         <div class="message-menu">
-                            <div class="menu-toggle" @click="isMessageMenuHidden(contacts[selectedContact].messages, i)">
+                            <div class="menu-toggle"
+                                @click="isMessageMenuHidden(contacts[selectedContact].messages, i)">
                                 <i>
-                                    <svg viewBox="0 0 18 18" width="18" height="18" class=""><path fill="currentColor" d="M3.3 4.6 9 10.3l5.7-5.7 1.6 1.6L9 13.4 1.7 6.2l1.6-1.6z"></path></svg>
+                                    <svg viewBox="0 0 18 18" width="18" height="18" class="">
+                                        <path fill="currentColor"
+                                            d="M3.3 4.6 9 10.3l5.7-5.7 1.6 1.6L9 13.4 1.7 6.2l1.6-1.6z"></path>
+                                    </svg>
                                 </i>
                             </div>
                             <div class="menu-content" v-if="message.messageMenuHidden">
@@ -275,7 +280,8 @@
                                     <li>Rispondi</li>
                                     <li>Inoltra messaggio</li>
                                     <li>Messaggio importante</li>
-                                    <li @click="delMessage(contacts[selectedContact].messages, i)">Elimina messaggio</li>
+                                    <li @click="delMessage(contacts[selectedContact].messages, i)">Elimina messaggio
+                                    </li>
                                 </ul>
                             </div>
                         </div>

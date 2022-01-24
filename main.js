@@ -308,13 +308,13 @@ let vue = new Vue({
             messages[i].messageMenuHidden = !messages[i].messageMenuHidden;
         },
 
-        hideAllMessageMenu: function() {
+        hideAllMessageMenu: function () {
             this.contacts[this.selectedContact].messages.forEach((message) => {
                 message.messageMenuHidden = false;
             })
         },
 
-        delMessage: function(messages, i) {
+        delMessage: function (messages, i) {
             if (messages.length == 1) {
                 alert("Devi lasciare almeno un messaggio in chat!")
                 return;
