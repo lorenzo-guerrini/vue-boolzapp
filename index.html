@@ -18,6 +18,9 @@
 <!-- Risistemare side -->
 <!-- Ordinare utenti in base a ultimo messaggio -->
 <!-- Aggiungere risposte varie -->
+<!-- Sistemare le date -->
+<!-- Animazione menu messaggio -->
+<!-- Sistemare orari dei messaggi -->
 
 <body>
     <div id="app">
@@ -134,7 +137,7 @@
                 </div>
 
                 <!-- Side chat -->
-                <div class="side-chat" @click="selectedContact = i; MarkAsReadAllMessages(contact)"
+                <div class="side-chat" @click="selectedContact = i; MarkAsReadAllMessages(contact); hideAllMessageMenu()"
                     v-for="(contact, i) in contacts" v-show="matchesSearch(contact)">
 
                     <div class="side-chat-pic">
@@ -246,7 +249,7 @@
                         </i>
 
                         <!-- Contenuto del messaggio -->
-                        <div class="message-content">
+                        <div class="message-content" @click="hideAllMessageMenu">
                             <div class="message-text">
                                 {{message.text}}
                             </div>
@@ -256,6 +259,24 @@
                                 <!-- Se il messaggio è stato letto aggiunge spunta blu, altrimenti grigia -->
                                 <i v-if="(message.status == 'sent')" class="read-icon"
                                     :class="{'seen' : message.read}"></i>
+                            </div>
+                        </div>
+
+                        <!-- Menu messaggio -->
+                        <div class="message-menu">
+                            <div class="menu-toggle" @click="isMessageMenuHidden(contacts[selectedContact].messages, i)">
+                                <i>
+                                    <svg viewBox="0 0 18 18" width="18" height="18" class=""><path fill="currentColor" d="M3.3 4.6 9 10.3l5.7-5.7 1.6 1.6L9 13.4 1.7 6.2l1.6-1.6z"></path></svg>
+                                </i>
+                            </div>
+                            <div class="menu-content" v-if="message.messageMenuHidden">
+                                <ul>
+                                    <li>Info messaggio</li>
+                                    <li>Rispondi</li>
+                                    <li>Inoltra messaggio</li>
+                                    <li>Messaggio importante</li>
+                                    <li @click="delMessage(contacts[selectedContact].messages, i)">Elimina messaggio</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
