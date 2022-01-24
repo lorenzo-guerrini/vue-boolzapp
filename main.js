@@ -2,7 +2,7 @@ let vue = new Vue({
     el: "#app",
     data: {
         user: {
-            name: "Lorenzo",
+            name: "Andrea",
             avatar: "_user"
         },
         contacts: [
@@ -212,7 +212,7 @@ let vue = new Vue({
             return this.contacts[this.selectedContact];
         },
 
-        MarkAsReadAllMessages: function (contact) {
+        markAsReadAllMessages: function (contact) {
             contact.messages.forEach((message) => {
                 message.read = true;
             });
@@ -274,7 +274,8 @@ let vue = new Vue({
                 date: this.getCurrentDate(),
                 text: this.messageInput,
                 status: "sent",
-                read: true
+                read: true,
+                messageMenuHidden: false
             })
 
             this.messageInput = "";
@@ -289,7 +290,8 @@ let vue = new Vue({
                     date: this.getCurrentDate(),
                     text: "Ok",
                     status: "received",
-                    read: true
+                    read: true,
+                    messageMenuHidden: false
                 });
 
                 this.contacts[this.selectedContact].status = "online"
@@ -367,7 +369,7 @@ let vue = new Vue({
     },
     mounted: function () {
         this.applyChatIcons();
-        this.MarkAsReadAllMessages(this.getSelectedContact());
+        this.markAsReadAllMessages(this.getSelectedContact());
     },
 
     updated() {

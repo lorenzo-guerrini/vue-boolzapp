@@ -9,19 +9,6 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
 </head>
 
-<!-- TODO -->
-<!-- Sistemare svg -->
-<!-- Mettere ora e giorno separati in ultimo accesso -->
-<!-- Cambiare temp-user-chat in user-chat e user-chat in user-chat-container -->
-<!-- Sistemare scrollbar con trasparenza -->
-<!-- Permesso notifiche -->
-<!-- Risistemare side -->
-<!-- Ordinare utenti in base a ultimo messaggio -->
-<!-- Aggiungere risposte varie -->
-<!-- Sistemare le date -->
-<!-- Animazione menu messaggio -->
-<!-- Sistemare orari dei messaggi -->
-
 <body>
     <div id="app">
 
@@ -37,7 +24,7 @@
                         <img :src="'img/propics/' + user.avatar + '.jpg'" :alt="user.name">
                     </div>
                     <div class="user-name">
-                        Lorenzo
+                        {{user.name}}
                     </div>
                 </div>
 
@@ -138,7 +125,7 @@
 
                 <!-- Side chat -->
                 <div class="side-chat"
-                    @click="selectedContact = i; MarkAsReadAllMessages(contact); hideAllMessageMenu()"
+                    @click="selectedContact = i; markAsReadAllMessages(contact); hideAllMessageMenu()"
                     v-for="(contact, i) in contacts" v-show="matchesSearch(contact)">
 
                     <div class="side-chat-pic">

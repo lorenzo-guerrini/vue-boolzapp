@@ -548,6 +548,8 @@ main {
 
     display: flex;
     align-items: center;
+
+    user-select: none;
 }
 
 .message.sent .message-bottom {

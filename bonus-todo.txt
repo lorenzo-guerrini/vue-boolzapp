@@ -34,3 +34,23 @@ B) aggiungere quindi un’icona con una freccia verso sinistra per tornare indie
 - aggiungere un’icona per ingrandire o rimpicciolire il font: dovrebbe essere sufficiente aggiungere una classe al wrapper principale
 
 - aggiungere un’icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale
+
+- TODO
+- Sistemare svg
+- Mettere ora e giorno separati in ultimo accesso
+- Cambiare temp-user-chat in user-chat e user-chat in user-chat-container
+- Sistemare scrollbar con trasparenza
+- Permesso notifiche
+- Risistemare side
+- Ordinare utenti in base a ultimo messaggio
+- Aggiungere risposte varie
+- Sistemare le date
+- Animazione menu messaggio
+- Sistemare orari dei messaggi
+- Rimuovi archiviate durante ricerca
+- Implementare data in chat
+- Gestione messaggi parole lunghe
+- Bug menu chat
+- Menu chat rivolto dal lato opposto se a scrivere è l'altra persona
+- Rivedere lezioni con spiegazione
+- Rendere statica immagine di background
