@@ -83,7 +83,7 @@ header {
     padding: 8px;
 }
 
-.nav-icon svg {
+.nav-icon i {
     height: 24px;
     width: 24px;
 }
@@ -153,7 +153,7 @@ header {
     user-select: none;
 }
 
-#notifications-reminder .icon {
+#notifications-reminder i {
     margin-right: 16px;
     margin-top: 3px;
     color: #8EB2BE;
@@ -173,7 +173,7 @@ header {
     align-items: center;
 }
 
-#reminder-link .icon {
+#reminder-link i {
     margin: 5px 0 0 3px;
 }
 
@@ -361,7 +361,7 @@ header {
     margin-right: 2px;
 }
 
-#side i.read-icon svg {
+#side i.read-icon {
     width: 18px;
     height: 18px;
 }
@@ -378,7 +378,7 @@ header {
     position: relative;
 }
 
-#archived .icon {
+#archived i {
     height: 49px;
     width: 49px;
     margin: 0 14px;
@@ -388,11 +388,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#archived .icon svg {
-    height: 18px;
-    width: 18px;
 }
 
 #archived-info {
@@ -441,12 +436,12 @@ main {
 }
 
 /* Messaggi */
-#temp-user-chat {
+#user-chat {
     height: calc(100vh - 121px);
     overflow-y: auto;
 }
 
-#user-chat {
+#user-chat-container {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -455,7 +450,7 @@ main {
     padding-bottom: 8px;    
 }
 
-#user-chat::after {
+#user-chat-container::after {
     content: "";
     background-image: url("img/background.png");
     background-size: auto;
@@ -660,7 +655,12 @@ footer {
     align-items: center;
 }
 
-footer svg {
+#send-media div i {
+    display: flex;
+    align-items: center;
+}
+
+footer i {
     width: 100%;
     height: 100%;
 }
@@ -683,7 +683,7 @@ footer svg {
     margin-left: 16.5px;
 }
 
-#send-audio-record svg {
+#send-audio-record i {
     height: 24px;
     width: 24px;
 }
