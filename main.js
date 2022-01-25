@@ -16,22 +16,19 @@ let vue = new Vue({
                         date: "23/12/2021 21:37:23",
                         text: "It's over.",
                         status: "sent",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "23/12/2021 21:38:41",
                         text: "Just because it's over",
                         status: "received",
-                        read: false,
-                        messageMenuHidden: false
+                        read: false
                     },
                     {
                         date: "23/12/2021 21:39:41",
                         text: "Doesn't mean it's really over",
                         status: "received",
-                        read: false,
-                        messageMenuHidden: false
+                        read: false
                     }
                 ],
             },
@@ -45,29 +42,25 @@ let vue = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "How are you?",
                         status: "sent",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Don't show up",
                         status: "received",
-                        read: false,
-                        messageMenuHidden: false
+                        read: false
                     },
                     {
                         date: "10/01/2020 15:51:00",
                         text: "Don't come out",
                         status: "received",
-                        read: false,
-                        messageMenuHidden: false
+                        read: false
                     },
                     {
                         date: "10/01/2020 15:52:00",
                         text: "Don't start caring about me now",
                         status: "received",
-                        read: false,
-                        messageMenuHidden: false
+                        read: false
                     }
                 ],
             },
@@ -81,43 +74,37 @@ let vue = new Vue({
                         date: "20/03/2020 16:30:00",
                         text: "I got that summertime, summertime sadness",
                         status: "received",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "10/01/2020 15:32:54",
                         text: "Do you want to talk about it?",
                         status: "sent",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "20/03/2020 16:35:00",
                         text: "Su-su-summertime, summertime sadness",
                         status: "received",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "20/03/2020 16:36:00",
                         text: "Got that summertime, summertime sadness",
                         status: "received",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "10/01/2020 15:38:54",
                         text: "Is everything ok?",
                         status: "sent",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "20/03/2020 16:39:00",
                         text: "Oh, oh-oh, oh-oh",
                         status: "received",
-                        read: false,
-                        messageMenuHidden: false
+                        read: false
                     },
 
                 ],
@@ -132,29 +119,25 @@ let vue = new Vue({
                         date: "28/03/2020 10:10:40",
                         text: "Vorrei ordinare due pizze",
                         status: "sent",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "28/03/2020 10:25:10",
                         text: "Certo, quali?",
                         status: "received",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "28/03/2020 10:27:10",
                         text: "Una marinara e una margherita",
                         status: "sent",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "28/03/2020 10:30:14",
                         text: "Perfetto, a che indirizzo?",
                         status: "received",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                 ],
             },
@@ -168,27 +151,26 @@ let vue = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "Ciao come stai?",
                         status: "received",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Chi sei?",
                         status: "sent",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                     {
                         date: "10/01/2020 15:32:38",
                         text: "Sono Marco!",
                         status: "received",
-                        read: true,
-                        messageMenuHidden: false
+                        read: true
                     },
                 ],
             },
         ],
         selectedContact: 0,
+        slectedMessage: -1,
+        isMenuOpen: false,
         messageInput: "",
         searchInput: "",
     },
@@ -274,8 +256,7 @@ let vue = new Vue({
                 date: this.getCurrentDate(),
                 text: this.messageInput,
                 status: "sent",
-                read: true,
-                messageMenuHidden: false
+                read: true
             })
 
             this.messageInput = "";
@@ -290,8 +271,7 @@ let vue = new Vue({
                     date: this.getCurrentDate(),
                     text: "Ok",
                     status: "received",
-                    read: true,
-                    messageMenuHidden: false
+                    read: true
                 });
 
                 this.contacts[this.selectedContact].status = "online"
@@ -300,20 +280,9 @@ let vue = new Vue({
             }, 1000);
         },
 
-        //Toggle true/false su messageMenuHidden per poter mostrare il menu
-        messageMenuHiddenToggle: function (messages, i) {
-            messages.forEach((message) => {
-                if (message != messages[i]) {
-                    message.messageMenuHidden = false;
-                }
-            })
-            messages[i].messageMenuHidden = !messages[i].messageMenuHidden;
-        },
-
+        //Menu chat
         hideAllMessageMenu: function () {
-            this.contacts[this.selectedContact].messages.forEach((message) => {
-                message.messageMenuHidden = false;
-            })
+            this.slectedMessage = -1;
         },
 
         delMessage: function (messages, i) {
@@ -322,6 +291,14 @@ let vue = new Vue({
                 return;
             }
             messages.splice(i, 1)
+        },
+
+        toggleSelectedMessage: function (messageIndex) {
+            if (this.slectedMessage == messageIndex) {
+                this.slectedMessage = -1;
+                return;
+            }
+            this.slectedMessage = messageIndex;
         },
 
         //Ora
