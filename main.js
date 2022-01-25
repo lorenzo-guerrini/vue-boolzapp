@@ -169,7 +169,7 @@ let vue = new Vue({
             },
         ],
         selectedContact: 0,
-        slectedMessage: -1,
+        selectedMessage: -1,
         isMenuOpen: false,
         messageInput: "",
         searchInput: "",
@@ -282,7 +282,8 @@ let vue = new Vue({
 
         //Menu chat
         hideAllMessageMenu: function () {
-            this.slectedMessage = -1;
+            this.selectedMessage = -1;
+            this.isMenuOpen = false;
         },
 
         delMessage: function (messages, i) {
@@ -294,11 +295,13 @@ let vue = new Vue({
         },
 
         toggleSelectedMessage: function (messageIndex) {
-            if (this.slectedMessage == messageIndex) {
-                this.slectedMessage = -1;
+            if (this.selectedMessage == messageIndex) {
+                this.selectedMessage = -1;
+                this.isMenuOpen = false;
                 return;
             }
-            this.slectedMessage = messageIndex;
+            this.selectedMessage = messageIndex;
+            this.isMenuOpen = true;
         },
 
         //Ora

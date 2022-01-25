@@ -202,11 +202,11 @@
 
                         <!-- Menu messaggio -->
                         <div class="message-menu">
-                            <div class="menu-toggle" @click="toggleSelectedMessage(i)">
+                            <div class="menu-toggle" :class="(isMenuOpen&&selectedMessage == i)?'show':''" @click="toggleSelectedMessage(i)">
                                 <i class="chevron-down"></i>
                             </div>
 
-                            <div class="menu-content" v-if="slectedMessage == i">
+                            <div class="menu-content" v-if="selectedMessage == i">
                                 <ul>
                                     <li>Info messaggio</li>
                                     <li>Rispondi</li>
